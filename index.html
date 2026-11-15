@@ -117,6 +117,8 @@ svg{display:block;flex:none}
 .srow.race .sday{background:var(--fast);color:#14213D}
 .srow.today .sday b,.srow.race .sday b{color:inherit;opacity:.8}
 .srow.missed .sbody b{color:var(--muted)}
+.srow.opt .sday{background:none;border:1.5px dashed var(--dot)}
+.srow.opt.done .sday{border-style:solid}
 .goal{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;text-align:right;line-height:1.1}
 .goal small{display:block;font-size:12px;font-weight:600;color:var(--muted)}
 .empty{padding:22px 16px;color:var(--muted);text-align:center;font-size:15px}
@@ -133,7 +135,8 @@ svg{display:block;flex:none}
 .dots{display:flex;gap:5px}
 .dots i{width:12px;height:12px;border-radius:50%;border:2px solid var(--dot)}
 .dots i.race{border-color:var(--fast-line)}
-.dots i.on{background:var(--done);border-color:var(--done)}
+.dots i.opt{border-style:dashed}
+.dots i.on{background:var(--done);border-color:var(--done);border-style:solid}
 .wk-b{background:var(--soft)}
 .wk-b .sday{background:var(--card)}
 
@@ -142,6 +145,7 @@ svg{display:block;flex:none}
 .tiles div{background:var(--card);border-radius:18px;padding:14px 8px;text-align:center;box-shadow:var(--shadow)}
 .tiles b{display:block;font-size:26px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .tiles span{font-size:12.5px;color:var(--muted)}
+.tiles b small{font-size:15px;font-weight:700;color:var(--muted);margin-left:3px}
 .card{background:var(--card);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);margin-bottom:24px}
 .card p{margin:8px 0 0;color:var(--muted);font-size:15px}
 .card.top{margin-bottom:12px}
@@ -200,6 +204,23 @@ svg{display:block;flex:none}
 .steps .r{color:var(--muted);font-size:14.5px;font-variant-numeric:tabular-nums}
 .note{background:var(--card);border-radius:16px;padding:12px 14px;margin-top:8px;font-size:15.5px;border-left:5px solid var(--line)}
 .note.ok{border-left-color:var(--done)}.note.warn{border-left-color:var(--warn)}
+.feel{background:var(--card);border-radius:18px;padding:12px 14px;margin-top:8px;box-shadow:var(--shadow)}
+.feel>b{display:block;margin-bottom:8px}
+.feel small{display:block;color:var(--muted);font-size:13.5px;margin-top:8px}
+.seg3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg3 button{min-height:44px;border-radius:12px;background:var(--soft);font-weight:700;text-align:center}
+.seg3 button.on{background:var(--accent);color:var(--on-accent)}
+.player .feel{background:rgba(255,255,255,.1);box-shadow:none;margin:0 0 14px}
+.player .seg3 button{background:rgba(255,255,255,.14)}
+.player .seg3 button.on{background:#fff;color:#0E1424}
+/* Souffle : un point par footing, placé sur la ligne de son niveau (la position porte l’information, pas la couleur) */
+.bp{display:grid;grid-template-columns:auto 1fr;gap:0 10px;margin-top:4px}
+.bp-y span{display:flex;align-items:center;height:26px;font-size:12.5px;color:var(--muted)}
+.bp-x{display:flex}
+.bp-x button{flex:1;min-width:24px;max-width:36px}
+.bp-x span{display:grid;place-items:center;height:26px;border-top:1px solid var(--line)}
+.bp-x span:last-child{border-bottom:1px solid var(--line)}
+.bp-x i{width:10px;height:10px;border-radius:50%;background:var(--accent)}
 .res{background:var(--card);border-radius:18px;padding:14px;margin-top:8px;box-shadow:var(--shadow)}
 .res label{display:block;font-weight:700;margin-bottom:8px}
 .res-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:8px}
@@ -311,6 +332,8 @@ details p{margin:0;padding-bottom:14px;color:var(--muted);font-size:15px}
     <details><summary>Une douleur qui dure</summary><p>Au-delà de 3 jours, on coupe. Si tu boites ou si ça augmente en courant, arrête tout de suite. Mieux vaut perdre une semaine que deux mois.</p></details>
     <h3>Le souffle</h3>
     <details><summary>Vite essoufflé ?</summary><p>C’est presque toujours l’allure. Ralentis jusqu’à pouvoir dire une phrase entière ; si ça ne suffit pas, marche 1 min puis repars. Le souffle progresse en courant lentement et souvent, pas en forçant.</p></details>
+    <details><summary>La séance facultative du dimanche</summary><p>30 à 45 min de vélo, de natation ou de marche rapide, sans forcer. Elle développe le souffle sans fatiguer les jambes. Elle ne compte pas dans le plan : si tu es fatigué, saute-la sans regret.</p></details>
+    <details><summary>Noter son souffle</summary><p>Après chaque séance, dis si ton souffle était facile, correct ou dur. L’onglet Progrès montre l’évolution sur tes footings : les séances rapides, elles, essoufflent toujours.</p></details>
     <details><summary>Départ progressif et air froid</summary><p>Commence chaque sortie par 5 min de marche rapide ou de trot très lent : les bronches ont besoin de temps pour s’ouvrir. Par temps froid, respire à travers un tour de cou.</p></details>
     <details><summary>Tabac</summary><p>Chaque cigarette en moins compte. Évite au moins de fumer dans les heures qui précèdent et qui suivent une séance.</p></details>
     <details><summary>Quand en parler à un médecin</summary><p>Sifflements, toux qui dure, oppression ou essoufflement inhabituel : parles-en avant de continuer, un test de souffle prend quelques minutes. Douleur dans la poitrine, malaise ou palpitations : arrête la séance et consulte sans attendre.</p></details>
@@ -334,6 +357,7 @@ details p{margin:0;padding-bottom:14px;color:var(--muted);font-size:15px}
     </div>
     <div class="pl-bar"><i id="plBar"></i></div>
     <div class="pl-stats"><div><b id="plElapsed">0:00</b>temps</div><div><b id="plDist">–</b>km</div><div><b id="plPace">–</b>allure /km</div></div>
+    <div class="feel" id="plFeel" hidden><b>Ton souffle sur cette séance ?</b><div class="seg3"><button data-pf="1">Facile</button><button data-pf="2">Correct</button><button data-pf="3">Dur</button></div></div>
     <div class="pl-opts" id="plOpts">
       <label class="sw"><span>Annonces vocales</span><input type="checkbox" id="optVoice" checked><i></i></label>
       <label class="sw"><span>GPS : distance et allure</span><input type="checkbox" id="optGps"><i></i></label>
@@ -399,6 +423,12 @@ const W=[
 ['Affûtage',[['Mar','Allure semi 3 × 2 km',E+'3 × 2 km à {S}, récup 2 min'+R],['Jeu','40 min + 4 lignes droites','Facile'],['Sam','60 min footing','Facile']]],
 ['Semaine du semi',[['Mar','Rappel 3 × 1 km',E+'3 × 1 km à {S}, récup 2 min'+R],['Jeu','25 min + 4 lignes droites','Très facile'],['Sam','15 min de déblocage','Tout doux, puis repos'],['Dim','Semi-marathon','Objectif 1h45. {J}',1,6300]]],
 ];
+// Quatrième séance, facultative et sans impact, le dimanche des semaines sans course : elle développe le souffle sans fatiguer les jambes.
+// Elle s’écrit [jour, titre, consigne, 0, 0, 1] : le 6e élément la marque comme facultative. Elle n’est jamais comptée dans les séances du plan.
+W.forEach((w,k)=>{
+  const n=k+1;if(w[1].some(s=>s[3]))return;
+  w[1].push(['Dim',(n<=10?30:n<=30?40:n<=41?45:30)+' min de cardio doux','Facultatif. Vélo, natation ou marche rapide, sans forcer : tu dois pouvoir parler. Si tu es fatigué, saute-la.',0,0,1]);
+});
 /* ---------- Outils ---------- */
 const DAY={Mar:1,Jeu:3,Sam:5,Dim:6};
 const PFX='semi27v2:';
@@ -499,13 +529,14 @@ function fill(n,txt,title){
   const P=paces(n);
   return txt.replace(/\{(\w+)\}/g,(_,k)=>k==='E'?fp(P.easy[0])+' à '+fp(P.easy[1]):k==='km'?kmEst(n,title):k==='J'?raceDayTxt(n):k==='C'?raceTxt(n):fp(P[TOK[k]]));
 }
-const sess=(n,i)=>{const s=W[n-1][1][i];return [s[0],s[1],fill(n,s[2],s[1]),s[3],s[4]]};
+const sess=(n,i)=>{const s=W[n-1][1][i];return [s[0],s[1],fill(n,s[2],s[1]),s[3],s[4],s[5]]};
 /* ---------- Étapes de chaque séance ---------- */
 const easyTxt=n=>{const [a,b]=paces(n).easy;return fp(a)+'–'+fp(b)};
 const easyBand=n=>paces(n).easy;
 const St=(k,label,d,pace,dist,hint)=>({k,label,d,pace:pace||null,dist:dist||null,hint:hint||''});
 function buildSteps(n,i){
-  const [,title,detail,isRace]=sess(n,i),Ez=easyTxt(n),SP=fp(paces(n).semi),st=[];let m;
+  const [,title,detail,isRace,,opt]=sess(n,i),Ez=easyTxt(n),SP=fp(paces(n).semi),st=[];let m;
+  if(opt)return [St('easy','Cardio doux',totalMin(title)*60,null,null,'Vélo, natation ou marche rapide')];
   if(isRace){
     const km=title.startsWith('Semi')?21.1:parseFloat(title);
     st.push(St('easy','Échauffement',km>20?300:600,Ez));
@@ -619,6 +650,7 @@ function evaluate(n,i,tr,sum){
 }
 function makeRun(n,i,pts,src,chronoTime,raceChrono){
   const r={id:Date.now(),n,i,src,date:new Date(pts.length?pts[0].t:Date.now()).toISOString()},isRace=sess(n,i)[3];
+  if(sess(n,i)[5]){r.src='chrono';r.time=chronoTime||0;r.dist=null;r.checks=[];return r} // séance facultative : on garde la durée, pas de distance ni de verdict (ce n’est pas de la course)
   const byChrono=()=>{if(isRace&&plaus(raceChrono,raceKm(sess(n,i)[1]))){r.raceT=Math.round(raceChrono);r.checks=[raceVerdict(n,i,raceChrono,' au chrono')]}};
   if(pts.length>10){const tr=track(pts),sum=summarize(tr);if(sum.dist>200){
     Object.assign(r,sum);r.checks=evaluate(n,i,tr,sum);
@@ -651,21 +683,21 @@ const runLine=r=>`${r.dist?fkm(r.dist)+' km · ':''}${ft(r.time)}${r.dist?' · '
 const segBar=steps=>`<div class="segs">${steps.map(s=>`<i class="k-${s.k}" style="flex:${Math.max(s.d||300,45)}"></i>`).join('')}</div>`;
 const chipsHTML=M=>`<div class="chips">${M.chips.map(c=>`<span>${c}</span>`).join('')}</div>`;
 function meta(n,i){ // tout ce qu’il faut pour afficher une séance : durée, distance estimée, allure, type
-  const [day,title,detail,isRace,goal]=sess(n,i),steps=buildSteps(n,i),P=paces(n),mid=(P.easy[0]+P.easy[1])/2;
+  const [day,title,detail,isRace,goal,opt]=sess(n,i),steps=buildSteps(n,i),P=paces(n),mid=(P.easy[0]+P.easy[1])/2;
   const secs=steps.reduce((a,s)=>a+(s.d||0),0),fast=steps.filter(s=>s.k==='fast'),tgt=fast.find(s=>isPace(s.pace));
   const km=steps.reduce((a,s)=>a+(s.d||0)/(s.k==='walk'?720:s.k==='rest'?560:isPace(s.pace)?ps(s.pace):s.k==='fast'?mid-60:mid),0);
-  const chips=isRace?[(raceKm(title)>20?'21,1':raceKm(title))+' km','Objectif '+ft(goal)]
+  const chips=opt?[hmin(secs),'Facultatif','Sans impact']:isRace?[(raceKm(title)>20?'21,1':raceKm(title))+' km','Objectif '+ft(goal)]
     :[hmin(secs),'≈ '+(km<10?km.toFixed(1).replace('.',','):Math.round(km))+' km',tgt?'Cible '+tgt.pace+' /km':easyTxt(n)+' /km'];
-  return {day,title,detail,isRace,goal,steps,secs,chips,d:sDate(n,day),tone:isRace?'race':fast.some(s=>s.d>=60)?'fast':'easy',
-    sub:isRace?chips[1]:chips[0]+' · '+chips[2].replace('Cible ','')};
+  return {day,title,detail,isRace,goal,opt,steps,secs,chips,d:sDate(n,day),tone:opt?'opt':isRace?'race':fast.some(s=>s.d>=60)?'fast':'easy',
+    sub:opt?chips[0]+' · facultatif':isRace?chips[1]:chips[0]+' · '+chips[2].replace('Cible ','')};
 }
 function whenTxt(d){
   const k=Math.round((d-today)/864e5),day=f(d,{weekday:'long',day:'numeric',month:'short'});
   return k===0?'Aujourd’hui':(k===1?'Demain · ':k>1&&k<7?`Dans ${k} jours · `:'')+day;
 }
 function sessRow(n,i){
-  const M=meta(n,i),done=isDone(n,i),isT=M.d.getTime()===today.getTime(),missed=!done&&M.d<today;
-  return `<button class="srow ${M.tone}${done?' done':''}${isT?' today':''}${missed?' missed':''}" data-open="${n},${i}"><span class="sday"><b>${f(M.d,{weekday:'short'}).replace('.','')}</b>${M.d.getDate()}</span><span class="sbody"><b>${M.title}</b><small>${isT&&!done?'Aujourd’hui · '+M.chips[M.isRace?1:0]:missed?'Pas faite · '+M.chips[M.isRace?1:0]:M.sub}</small></span><span class="sstat">${done?IC.check:M.isRace?IC.flag:IC.chev}</span></button>`;
+  const M=meta(n,i),done=isDone(n,i),isT=M.d.getTime()===today.getTime(),missed=!done&&M.d<today&&!M.opt;
+  return `<button class="srow ${M.tone}${done?' done':''}${isT?' today':''}${missed?' missed':''}" data-open="${n},${i}"><span class="sday"><b>${f(M.d,{weekday:'short'}).replace('.','')}</b>${M.d.getDate()}</span><span class="sbody"><b>${M.title}</b><small>${isT&&!done?'Aujourd’hui · '+(M.opt?M.sub:M.chips[M.isRace?1:0]):missed?'Pas faite · '+M.chips[M.isRace?1:0]:M.sub}</small></span><span class="sstat">${done?IC.check:M.isRace?IC.flag:IC.chev}</span></button>`;
 }
 function runRow(r){
   const [,t]=sess(r.n,r.i),d=new Date(r.date);
@@ -680,7 +712,7 @@ function raceCard({n,i,goal,title,km}){
 function nextUp(){ // la séance du jour si elle existe, sinon la prochaine pas encore faite
   for(let n=cur;n<=44;n++){
     const ss=W[n-1][1];
-    for(let i=0;i<ss.length;i++){const d=sDate(n,ss[i][0]);if(d.getTime()===today.getTime()||(d>today&&!isDone(n,i)))return {n,i,d}}
+    for(let i=0;i<ss.length;i++){if(ss[i][5])continue;const d=sDate(n,ss[i][0]);if(d.getTime()===today.getTime()||(d>today&&!isDone(n,i)))return {n,i,d}}
   }
   return null;
 }
@@ -701,6 +733,8 @@ function renderHome(){
     const fin=RACES[RACES.length-1],t=result(fin.n);
     h+=`<section class="hero done"><div class="hero-m" data-open="${fin.n},${fin.i}" role="button" tabindex="0"><span class="kick">${t?'Semi-marathon':'Plan terminé'}</span><h2>${t?ft(t)+' 🏁':'Bravo 🏁'}</h2><p>${t?(t<=GOAL?'Objectif 1h45 réussi. Bravo !':`Objectif 1h45 manqué de ${words(Math.round(t-GOAL))}. Tu as couru un semi : bravo.`):'Les 44 semaines sont derrière toi. Touche ici pour entrer ton chrono du semi.'}</p></div></section>`;
   }
+  const hard=feelList().filter(x=>x.foot).slice(-3);
+  if(hard.length===3&&hard.every(x=>x.v===3))h+=`<div class="note warn" style="margin:-12px 0 24px">Tes trois derniers footings étaient durs pour le souffle. Ralentis franchement, marche si besoin, et parles-en à un médecin si ça ne s’arrange pas.</div>`;
   const miss=[...RACES].reverse().find(r=>{const age=(today-sDate(r.n,'Dim'))/864e5;return age>0&&age<=14&&!result(r.n)});
   if(miss)h+=`<div class="list" style="margin-top:-12px"><button class="srow race" data-open="${miss.n},${miss.i}"><span class="sday">${IC.flag}</span><span class="sbody"><b>Entre ton chrono</b><small>${miss.title} : tes allures se recalent dessus</small></span><span class="sstat">${IC.chev}</span></button></div>`;
   const wk=up?up.n:cur;
@@ -751,11 +785,40 @@ function resumeLive(){
   speak('On reprend');tick();if(PL)drawPlayer();
 }
 
+/* ---------- Suivi du souffle ---------- */
+// Après chaque séance, une note de 1 (facile) à 3 (dur), gardée dans la clé w{n}:f{i}. La tendance ne regarde que les footings :
+// une séance rapide essouffle toujours, ce n’est pas un signal.
+const FEEL=['','Facile','Correct','Dur'];
+function feelList(){ // séances notées, dans l’ordre du plan
+  const out=[];
+  W.forEach((w,k)=>w[1].forEach((s,i)=>{
+    const v=+store.get(`w${k+1}:f${i}`);
+    if(v>=1&&v<=3)out.push({n:k+1,i,v,d:sDate(k+1,s[0]),title:s[1],foot:!s[3]&&!s[5]&&meta(k+1,i).tone==='easy'});
+  }));
+  return out;
+}
+function feelRow(n,i,M){ // les trois boutons de la fiche séance
+  const v=+store.get(`w${n}:f${i}`)||0;
+  return `<div class="feel" data-s="${n},${i}"><b>Ton souffle sur cette séance</b><div class="seg3">${[1,2,3].map(k=>`<button data-feel="${k}" aria-pressed="${v===k}"${v===k?' class="on"':''}>${FEEL[k]}</button>`).join('')}</div>${v===3&&M.tone==='easy'?'<small>Sur un footing, c’est le signe que c’était trop vite. La prochaine fois, pars 15 à 20 s/km plus lentement, ou marche 1 min toutes les 10 min.</small>':''}</div>`;
+}
+function breathCard(){
+  const all=feelList().filter(x=>x.foot),last=all.slice(-10);
+  if(!all.length)return `<section class="card"><p style="margin:0">Après chaque séance, note ton souffle. Tu verras ici s’il devient plus facile au fil des semaines.</p></section>`;
+  const cnt=[0,0,0,0];last.forEach(x=>cnt[x.v]++);
+  const avg=a=>a.reduce((s,x)=>s+x.v,0)/a.length,gap=all.length>=8?avg(all.slice(-4))-avg(all.slice(0,4)):null,left=8-all.length;
+  const msg=gap==null?`Encore ${left} footing${left>1?'s':''} à noter pour voir une tendance.`:gap<=-.5?'Ton souffle est plus facile qu’au début.':gap>=.5?'Ton souffle est plus difficile qu’au début : ralentis tes footings.':'Ton souffle est stable depuis le début.';
+  const pl=(k,w)=>`${k} ${w}${k>1?'s':''}`;
+  const cols=last.map(x=>`<button data-open="${x.n},${x.i}" title="${f(x.d,{day:'numeric',month:'short'})} · ${FEEL[x.v]}" aria-label="${f(x.d,{weekday:'long',day:'numeric',month:'long'})}, ${x.title} : souffle ${FEEL[x.v].toLowerCase()}">${[3,2,1].map(k=>`<span>${x.v===k?'<i></i>':''}</span>`).join('')}</button>`).join('');
+  return `<section class="card"><div class="bp"><div class="bp-y"><span>Dur</span><span>Correct</span><span>Facile</span></div><div class="bp-x">${cols}</div></div>
+    <div class="prog-b"><span>${last.length>1?'du '+f(last[0].d,{day:'numeric',month:'short'})+' au '+f(last[last.length-1].d,{day:'numeric',month:'short'}):f(last[0].d,{day:'numeric',month:'long'})}</span><span>${pl(cnt[1],'facile')}, ${pl(cnt[2],'correct')}, ${pl(cnt[3],'dur')}</span></div>
+    <p>${msg}</p></section>`;
+}
+
 /* ---------- Écran Plan ---------- */
 let openWk=null;
 function weekRow(n){
   const [note,ss]=W[n-1],open=n===openWk,rc=ss.find(s=>s[3]);
-  return `<div class="wk${n===cur?' cur':''}${n<cur?' past':''}${open?' open':''}" id="wk${n}"><button class="wk-h" data-wk="${n}" aria-expanded="${open}"><span class="wk-n">S${n}</span><span class="wk-d"><b>${short(wStart(n))} – ${short(sDate(n,'Dim'))}</b><small>${n===cur?'En cours'+(rc?' · '+rc[1]:''):rc?rc[1]:note}</small></span><span class="dots">${ss.map((s,i)=>`<i class="${isDone(n,i)?'on':''}${s[3]?' race':''}"></i>`).join('')}</span></button>${open?`<div class="wk-b">${ss.map((_,i)=>sessRow(n,i)).join('')}</div>`:''}</div>`;
+  return `<div class="wk${n===cur?' cur':''}${n<cur?' past':''}${open?' open':''}" id="wk${n}"><button class="wk-h" data-wk="${n}" aria-expanded="${open}"><span class="wk-n">S${n}</span><span class="wk-d"><b>${short(wStart(n))} – ${short(sDate(n,'Dim'))}</b><small>${n===cur?'En cours'+(rc?' · '+rc[1]:''):rc?rc[1]:note}</small></span><span class="dots">${ss.map((s,i)=>`<i class="${isDone(n,i)?'on':''}${s[3]?' race':''}${s[5]?' opt':''}"></i>`).join('')}</span></button>${open?`<div class="wk-b">${ss.map((_,i)=>sessRow(n,i)).join('')}</div>`:''}</div>`;
 }
 function renderPlan(){
   if(openWk==null)openWk=cur;
@@ -770,15 +833,16 @@ function renderPlan(){
 function renderProg(){
   const runs=getRuns().sort((a,b)=>b.date.localeCompare(a.date));
   const nL=RACES.some(r=>r.n===cur&&result(cur))?cur+1:cur,P=paces(nL),lv=level(nL); // dès que la course de la semaine a un chrono, on montre le niveau qui en découle
-  let doneN=0,total=0,full=0;
-  W.forEach((w,k)=>{let c=0;w[1].forEach((_,i)=>{total++;if(isDone(k+1,i)){doneN++;c++}});if(c===w[1].length)full++});
+  let doneN=0,total=0,full=0,optN=0; // les séances facultatives sont comptées à part
+  W.forEach((w,k)=>{let c=0,m=0;w[1].forEach((s,i)=>{const dn=isDone(k+1,i);if(s[5]){if(dn)optN++;return}total++;m++;if(dn){doneN++;c++}});if(c===m)full++});
   const km=runs.reduce((a,r)=>a+(r.dist||0),0)/1000,row=(a,b,v)=>`<div class="prow"><div><b>${a}</b><small>${b}</small></div><div class="v">${v}</div></div>`;
-  let h=`<div class="tiles"><div><b>${doneN}</b><span>séances sur ${total}</span></div><div><b>${Math.round(km)}</b><span>km enregistrés</span></div><div><b>${full}</b><span>semaines complètes</span></div></div>`;
+  let h=`<div class="tiles"><div><b>${doneN}${optN?`<small>+${optN}</small>`:''}</b><span>séances sur ${total}</span></div><div><b>${Math.round(km)}</b><span>km enregistrés</span></div><div><b>${full}</b><span>semaines complètes</span></div></div>`;
   if(lv){
     const proj=lv.t10*Math.pow(SEMI_KM/10,RG),pct=Math.max(4,Math.min(100,100*(8400-proj)/(8400-GOAL)));
     h+=`<section class="card"><span class="kick">Ton niveau aujourd’hui</span><div class="lvl-n">${hm(proj)}<small>au semi</small></div><div class="gauge"><b style="width:${pct}%"></b></div>
       <div class="prog-b"><span>${lv.real?`D’après ton ${lv.rc.title} en ${ft(lv.real)}`:`D’après l’objectif du ${lv.rc.title}`}</span><span>Objectif 1h45</span></div></section>`;
   }else h+=`<section class="card"><span class="kick">Ton niveau</span><p>Il sera mesuré à ta première course test, le ${f(sDate(RACES[0].n,'Dim'),{day:'numeric',month:'long'})}. D’ici là, tout se court en footing tranquille.</p></section>`;
+  h+=`<div class="sec-h"><h3>Mon souffle</h3><span>sur tes footings</span></div>${breathCard()}`;
   h+=`<div class="sec-h"><h3>Courses tests</h3></div><div class="strip">${RACES.map(raceCard).join('')}</div>`;
   h+=`<div class="sec-h"><h3>Mes allures</h3><span>au km</span></div><div class="list">${row('Footing','Tu peux parler en phrases complètes',easyTxt(nL))}${lv?row('Allure semi','Celle des blocs spécifiques',fp(P.semi))+row('Allure 10 km','Quelques mots seulement',fp(P.p10))+row('Seuil','Ton allure d’une heure de course',fp(P.seuil))+row('Fractionné','De 400 m à 1 km, avec récup',fp(P.i4)+'–'+fp(P.i1)):''}${row('Jour J','1h45 au semi','4:58')}</div>
     <p class="hint">${lv?(lv.real?'Elles se recalent à chaque course test.':'Entre ton chrono dans la fiche de la course pour les recaler sur ton vrai niveau.'):'Les autres allures apparaîtront après ta première course test.'}</p>`;
@@ -826,12 +890,13 @@ function openSession(n,i){
   <h2>${M.title}</h2>${chipsHTML(M)}${M.isRace?'':segBar(M.steps)}
   <p class="detail">${M.detail}</p>
   <button class="btn primary big" data-go="${n},${i}">${IC.play}Démarrer la séance</button>
-  <div class="btn-row"><button class="btn" id="shGpx">${IC.up}Importer un GPX</button><button class="btn${done?' on':''}" id="shDone">${IC.check}${done?'Faite':'Marquer faite'}</button></div>
+  <div class="btn-row">${M.opt?'':`<button class="btn" id="shGpx">${IC.up}Importer un GPX</button>`}<button class="btn${done?' on':''}" id="shDone">${IC.check}${done?'Faite':'Marquer faite'}</button></div>
+  ${done?feelRow(n,i,M):''}
   ${M.isRace?`<div class="res"><label for="resIn">Mon chrono officiel</label><div class="res-row"><input id="resIn" inputmode="decimal" autocomplete="off" placeholder="${km>12?'1:18:30':'52:30'}" value="${man?ft(res):''}"><button id="resOk">Valider</button></div><small>${res?(man?'Pris en compte.':`Mesuré par GPS : ${ft(res)}. Entre ton chrono officiel s’il est différent.`)+(n===44?'':' Tes allures des semaines suivantes sont calculées dessus.'):(n===44?'Entre-le après la course pour en garder la trace.':'Entre-le après la course : tes allures des semaines suivantes seront calculées dessus.')+` Tape juste les chiffres : ${km>12?'11830 pour 1:18:30':'5230 pour 52:30'}.`}</small></div>`:''}
   <div class="note warn" id="shMsg" hidden></div>
   ${rs.length?`<h3>Sorties enregistrées</h3><div class="list" style="margin-bottom:0">${rs.map(runRow).join('')}</div>`:''}
   <h3>Déroulé${M.secs?' · '+hmin(M.secs):''}</h3><ol class="steps">${list}</ol>`);
-  $('shGpx').onclick=()=>$('gpxIn').click();
+  if($('shGpx'))$('shGpx').onclick=()=>$('gpxIn').click();
   $('shDone').onclick=()=>{setDone(n,i,!done);openSession(n,i)};
   if(M.isRace)$('resOk').onclick=()=>{
     const v=$('resIn').value.trim();
@@ -878,7 +943,7 @@ function openRun(id){
   <h2>${title}</h2>
   <div class="tiles"><div><b>${r.dist?fkm(r.dist):'–'}</b><span>km</span></div><div><b>${ft(r.time)}</b><span>temps</span></div><div><b>${r.dist?fp(r.time/(r.dist/1000)):'–'}</b><span>allure /km</span></div></div>
   ${(r.checks||[]).map(c=>`<div class="note ${c.c==='ok'||c.c==='warn'?c.c:''}">${esc(c.t)}</div>`).join('')}${off}
-  ${r.dist?'':'<div class="note">Séance enregistrée au chrono, sans GPS : pas d’analyse d’allure. Active le GPS ou importe le GPX de Strava pour l’avoir.</div>'}
+  ${r.dist||sess(r.n,r.i)[5]?'':'<div class="note">Séance enregistrée au chrono, sans GPS : pas d’analyse d’allure. Active le GPS ou importe le GPX de Strava pour l’avoir.</div>'}
   ${chartSVG(r)}${splits}
   <div class="btn-row" style="margin-top:18px"><button class="btn" data-open="${r.n},${r.i}">Voir la séance</button><button class="btn danger" id="delRun">Supprimer</button></div>`);
   $('delRun').onclick=e=>twoTap(e.currentTarget,'Toucher encore',()=>{saveRuns(getRuns().filter(x=>x.id!==id));closeSheet()});
@@ -917,9 +982,10 @@ window.addEventListener('popstate',()=>{
 });
 $('optVoice').onchange=()=>speak('Annonces vocales activées'); // confirme tout de suite que le son marche
 document.addEventListener('click',e=>{
-  const t=e.target.closest('[data-go],[data-open],[data-run],[data-wk],[data-tab]');if(!t)return;
+  const t=e.target.closest('[data-feel],[data-go],[data-open],[data-run],[data-wk],[data-tab]');if(!t)return;
   const d=t.dataset,pair=s=>s.split(',').map(Number);
-  if(d.go){closeSheet(true);openPlayer(...pair(d.go))}
+  if(d.feel){const [n,i]=pair(t.closest('.feel').dataset.s),key=`w${n}:f${i}`;store.set(key,store.get(key)===d.feel?null:d.feel);openSession(n,i)} // un second appui retire la note
+  else if(d.go){closeSheet(true);openPlayer(...pair(d.go))}
   else if(d.open)openSession(...pair(d.open));
   else if(d.run)openRun(+d.run);
   else if(d.wk){openWk=openWk===+d.wk?0:+d.wk;renderPlan()}
@@ -965,7 +1031,7 @@ function openPlayer(n,i){
   histPush();setInert(true);
   PL={n,i,steps:buildSteps(n,i),idx:0,state:'ready',t0:0,pauseAcc:0,pausedAt:0,stepAt:0,tapAt:0,pts:[],dist:0,d0:0,lastKm:0,kmAt:0,watch:null,beeped:-1};
   $('plSess').textContent=sess(n,i)[1];$('plClose').textContent='Quitter';delete $('plClose').dataset.armed;$('player').hidden=false;document.body.style.overflow='hidden';
-  $('plOpts').hidden=false;$('plBar').style.width='0%';
+  $('plOpts').hidden=false;$('plFeel').hidden=true;$('plBar').style.width='0%';
   setLock(false);
   $('plNote').textContent='Garde l’écran allumé : si le téléphone se verrouille, les annonces et le GPS s’arrêtent. Dans la poche, touche 🔒 pour bloquer les boutons.';
   drawPlayer();
@@ -1058,16 +1124,18 @@ function finish(at){ // at : instant de fin connu (dernière étape chronométr�
   if(!r.dist)r.time=a;
   $('player').dataset.k='ready';
   $('plStep').textContent='Terminé 🎉';$('plHint').textContent=r.dist?fkm(r.dist)+' km · '+fp(r.time/(r.dist/1000))+'/km':'Séance au chrono';
-  $('plTime').textContent=ft(a);$('plNext').textContent='';$('plBar').style.width='100%';$('plNote').textContent='';
+  $('plTime').textContent=$('plElapsed').textContent=ft(a);$('plNext').textContent='';$('plBar').style.width='100%';$('plNote').textContent='';
+  PL.feel=0;$('plFeel').hidden=false;$('plFeel').querySelectorAll('button').forEach(b=>b.classList.remove('on'));
   $('plBtns').dataset.st='';
   $('plBtns').innerHTML='<button id="bDrop">Ne pas garder</button><button class="main" id="bSave">Enregistrer</button>';
   $('bDrop').onclick=e=>twoTap(e.currentTarget,'Sûr ?',closePlayer);
   $('bSave').onclick=()=>{
     if(!addRun(r)){$('plNote').textContent='Enregistrement impossible : le stockage du téléphone est plein ou bloqué.';return}
+    if(PL.feel)store.set(`w${PL.n}:f${PL.i}`,String(PL.feel));
     closePlayer();openRun(r.id);
   };
 }
-function closePlayer(){if(PL&&PL.state!=='ready')liveClear();histDrop();stopAll();$('player').hidden=true;document.body.style.overflow='';setInert(false);PL=null;refresh()}
+function closePlayer(){$('plFeel').hidden=true;if(PL&&PL.state!=='ready')liveClear();histDrop();stopAll();$('player').hidden=true;document.body.style.overflow='';setInert(false);PL=null;refresh()}
 $('plClose').onclick=()=>{
   if(!PL)return;
   if(PL.state==='run'||PL.state==='pause')twoTap($('plClose'),'Toucher pour arrêter',finish);
@@ -1078,6 +1146,7 @@ $('plClose').onclick=()=>{
 const UNLOCK='🔒 Maintiens 2 s pour débloquer';
 function setLock(v){$('player').classList.toggle('locked',v);$('plUnlock').hidden=!v;$('plUnlock').textContent=UNLOCK}
 $('plLock').onclick=()=>setLock(true);
+$('plFeel').addEventListener('click',e=>{const b=e.target.closest('[data-pf]');if(!b||!PL)return;PL.feel=PL.feel===+b.dataset.pf?0:+b.dataset.pf;$('plFeel').querySelectorAll('button').forEach(x=>x.classList.toggle('on',+x.dataset.pf===PL.feel))});
 let holdT=null;
 $('plUnlock').addEventListener('pointerdown',e=>{e.preventDefault();clearTimeout(holdT);$('plUnlock').textContent='Maintiens encore…';holdT=setTimeout(()=>{holdT=null;setLock(false)},2000)});
 ['pointerup','pointercancel','pointerleave'].forEach(ev=>$('plUnlock').addEventListener(ev,()=>{clearTimeout(holdT);holdT=null;$('plUnlock').textContent=UNLOCK}));
@@ -1107,7 +1176,7 @@ $('bakOut').onclick=()=>{
   else download();
 };
 $('bakBtn').onclick=e=>twoTap(e.currentTarget,'Encore : remplace tout',()=>$('bakIn').click());
-const BAK_KEY=/^(runs|seen|bak|w\d+:(s\d+|t))$/; // seules clés acceptées à l’import
+const BAK_KEY=/^(runs|seen|bak|w\d+:(s\d+|f\d+|t))$/; // seules clés acceptées à l’import
 $('bakIn').onchange=async e=>{
   const file=e.target.files[0];e.target.value='';if(!file)return;
   let old=null;
