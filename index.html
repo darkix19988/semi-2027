@@ -289,7 +289,7 @@ details p{margin:0;padding-bottom:14px;color:var(--muted);font-size:15px}
     <details><summary>La séance guidée</summary><p>Touche « Démarrer » : l’écran change de couleur à chaque étape et une voix annonce la suite. Garde l’écran allumé : s’il se verrouille, les annonces s’arrêtent (le chrono, lui, se recale quand tu rouvres). Téléphone dans la poche : touche 🔒 pour bloquer les boutons.</p></details>
     <details><summary>Importer depuis Strava ou ta montre</summary><p>Sur strava.com, ouvre l’activité, menu ⋯, « Exporter le fichier GPX ». Puis ouvre la séance ici et touche « Importer un GPX ».</p></details>
     <details><summary>Après chaque course test</summary><p>Entre ton chrono dans la fiche de la course. Les allures des semaines suivantes se recalent dessus, et l’objectif du semi s’ajuste si besoin.</p></details>
-    <details><summary>Pas de course ce week-end-là ?</summary><p>Fais le test seul, sur un parcours plat, le même dimanche. C’est fréquent fin juillet pour le 10 km n°4.</p></details>
+    <details><summary>Pas de course ce week-end-là ?</summary><p>Fais le test seul, sur un parcours plat, le même dimanche. C’est fréquent en été, pour le semi test de fin juillet et le 10 km de mi-août.</p></details>
     <details><summary>Renforcement</summary><p>Deux fois 15 min par semaine : gainage, squats, fentes, mollets.</p></details>
     <details><summary>Une douleur qui dure</summary><p>Au-delà de 3 jours, on coupe. Mieux vaut perdre une semaine que deux mois.</p></details>
     <h3>Sauvegarde</h3>
@@ -329,7 +329,7 @@ const RACE_DATE = '2027-09-19'; // dimanche du semi (AAAA-MM-JJ) : tout le plan 
 const PHASES=[[1,10,'Base'],[11,20,'Fondation'],[21,30,'Développement'],[31,41,'Spécifique semi'],[42,44,'Affûtage']];
 // Jetons remplacés à l’affichage selon le niveau du moment (voir « Niveau et allures ») :
 // {E} footing, {S} semi, {D} 10 km, {T} seuil, {I4} {I8} {I1} fractionné 400 m / 800 m / 1 km, {km} distance estimée, {J} consignes du jour J.
-// Une course s’écrit [jour, titre, consigne, 1, objectif en secondes].
+// Une course s’écrit [jour, titre, consigne, 1, objectif en secondes]. Son titre commence par la distance (« 15 km n°1 ») ou par « Semi ».
 const E='15 min facile, ', R=', 10 min au calme', Z='Très lent : {E}/km', K='Facile, environ {km} km', RC='Facile : tu récupères du 10 km';
 const W=[
 ['',[['Mar','30 min course-marche','5 min de marche, puis 2 fois : 10 min course + 2 min marche, puis 1 min de marche. Total : 30 min, très lent.'],['Jeu','30 min course-marche','5 min de marche, puis 2 fois : 10 min course + 2 min marche, puis 1 min de marche. Total : 30 min, très lent.'],['Sam','20 min sans marcher',Z]]],
@@ -352,26 +352,26 @@ const W=[
 ['Semaine course',[['Mar','35 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','10 km n°1','Objectif sous 57 min. Pars à 5:45/km, accélère après le 6e km si ça va.',1,3420]]],
 ['',[['Mar','45 min footing','Facile'],['Jeu','Fartlek 45 min','15 min facile, 5 × (3 min soutenu, 1 min 30 facile), retour au calme'],['Sam','75 min footing',K]]],
 ['',[['Mar','45 min footing','Facile'],['Jeu','Fartlek 50 min','15 min facile, 6 × (3 min soutenu, 1 min 30 facile), retour au calme'],['Sam','75 min footing',K]]],
-['',[['Mar','Fractionné 6 × 400 m',E+'6 × 400 m à {I4}, récup 1 min 30'+R],['Jeu','40 min footing','Facile'],['Sam','75 min footing',K]]],
-['',[['Mar','Seuil 3 × 8 min',E+'3 × 8 min à {T}, récup 2 min'+R],['Jeu','45 min footing','Facile'],['Sam','80 min footing',K]]],
-['',[['Mar','Fractionné 8 × 400 m',E+'8 × 400 m à {I4}, récup 1 min 15'+R],['Jeu','45 min + 4 lignes droites','Facile'],['Sam','85 min footing',K]]],
-['Semaine course',[['Mar','35 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','10 km n°2','Objectif sous 53 min, soit 5:18/km.',1,3180]]],
+['Semaine course',[['Mar','35 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','10 km n°2','Objectif sous 55 min, soit 5:30/km.',1,3300]]],
+['',[['Mar','45 min footing',RC],['Jeu','Fractionné 6 × 400 m',E+'6 × 400 m à {I4}, récup 1 min 30'+R],['Sam','80 min footing',K]]],
+['',[['Mar','Seuil 3 × 8 min',E+'3 × 8 min à {T}, récup 2 min'+R],['Jeu','45 min + 4 lignes droites','Facile'],['Sam','85 min footing',K]]],
+['Semaine course',[['Mar','35 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','10 km n°3','Objectif sous 53 min, soit 5:18/km.',1,3180]]],
 ['',[['Mar','45 min footing',RC],['Jeu','Seuil 3 × 10 min',E+'3 × 10 min à {T}, récup 2 min'+R],['Sam','90 min footing',K]]],
 ['',[['Mar','Fractionné 6 × 800 m',E+'6 × 800 m à {I8}, récup 2 min'+R],['Jeu','45 min footing','Facile'],['Sam','90 min dont 20 min allure semi','70 min facile, puis 20 min à {S}']]],
-['',[['Mar','Seuil 2 × 15 min',E+'2 × 15 min à {T}, récup 3 min'+R],['Jeu','50 min footing','Facile'],['Sam','95 min footing',K]]],
-['',[['Mar','Fractionné 10 × 400 m',E+'10 × 400 m à {I4}, récup 1 min 15'+R],['Jeu','45 min footing','Facile'],['Sam','1 h 40 footing',K]]],
-['',[['Mar','Fractionné 5 × 1 km',E+'5 × 1 km à {I1}, récup 2 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 40 footing',K]]],
-['Semaine course',[['Mar','30 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','10 km n°3','Objectif sous 50 min, soit 5:00/km.',1,3000]]],
+['Semaine course',[['Mar','35 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','15 km n°1','Objectif sous 1h20, soit 5:20/km. Pars à 5:25/km sur les 5 premiers km.',1,4800]]],
+['',[['Mar','40 min footing','Très facile : tu récupères du 15 km'],['Jeu','Fractionné 8 × 400 m',E+'8 × 400 m à {I4}, récup 1 min 15'+R],['Sam','95 min footing',K]]],
+['',[['Mar','Seuil 2 × 15 min',E+'2 × 15 min à {T}, récup 3 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 40 footing',K]]],
+['Semaine course',[['Mar','30 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','10 km n°4','Objectif sous 50 min, soit 5:00/km.',1,3000]]],
 ['',[['Mar','45 min footing',RC],['Jeu','Allure semi 3 × 3 km',E+'3 × 3 km à {S}, récup 2 min'+R],['Sam','1 h 40 footing',K]]],
 ['',[['Mar','Fractionné 5 × 1 km',E+'5 × 1 km à {I1}, récup 2 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 45 dont 30 min allure semi','75 min facile, puis 30 min à {S}']]],
-['Semaine allégée',[['Mar','40 min footing','Facile'],['Jeu','35 min + 4 lignes droites','Facile'],['Sam','70 min footing','Facile']]],
-['',[['Mar','Allure semi 2 × 4 km',E+'2 × 4 km à {S}, récup 3 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 50 footing',K]]],
-['',[['Mar','Fractionné 6 × 1 km',E+'6 × 1 km à {I1}, récup 2 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 45 dont 2 × 20 min allure semi','50 min facile, 2 × 20 min à {S} avec 5 min facile entre les deux, 10 min au calme']]],
-['Semaine course',[['Mar','40 min + 4 lignes droites','Facile'],['Jeu','35 min + 3 lignes droites','Facile'],['Dim','10 km n°4','Objectif 47:30, soit 4:45/km. En dessous, le 1h45 est jouable.',1,2850]]],
-['',[['Mar','45 min footing',RC],['Jeu','Allure semi 2 × 4 km',E+'2 × 4 km à {S}, récup 3 min'+R],['Sam','1 h 50 footing',K+'. Pars tôt s’il fait chaud.']]],
-['',[['Mar','Seuil 2 × 15 min',E+'2 × 15 min à {T}, récup 3 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 50 dont 40 min allure semi','70 min facile, puis 40 min à {S}. Teste ton ravitaillement.']]],
-['',[['Mar','Fractionné 6 × 1 km',E+'6 × 1 km à {I1}, récup 2 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 55 dont 2 × 15 min allure semi','70 min facile, 2 × 15 min à {S} avec 5 min facile entre les deux, 10 min au calme']]],
-['Semaine allégée',[['Mar','40 min footing','Facile'],['Jeu','35 min + 4 lignes droites','Facile'],['Sam','75 min footing','Facile']]],
+['Semaine course',[['Mar','35 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','15 km n°2','Objectif sous 1h15, soit 5:00/km. Pars à 5:05/km sur les 5 premiers km.',1,4500]]],
+['',[['Mar','40 min footing','Très facile : tu récupères du 15 km'],['Jeu','Allure semi 2 × 4 km',E+'2 × 4 km à {S}, récup 3 min'+R],['Sam','1 h 50 footing',K+'. Pars tôt s’il fait chaud.']]],
+['',[['Mar','Fractionné 6 × 1 km',E+'6 × 1 km à {I1}, récup 2 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 40 dont 2 × 15 min allure semi','55 min facile, 2 × 15 min à {S} avec 5 min facile entre les deux, 10 min au calme']]],
+['Semaine course',[['Mar','40 min + 4 lignes droites','Facile'],['Jeu','30 min + 3 lignes droites','Facile'],['Dim','Semi test','Objectif sous 1h47, soit 5:04/km. Pars à 5:10/km sur les 5 premiers km, et tôt s’il fait chaud. Teste ton ravitaillement.',1,6420]]],
+['Semaine allégée',[['Mar','40 min footing','Très facile : tu récupères du semi'],['Jeu','45 min + 4 lignes droites','Facile'],['Sam','75 min footing','Facile']]],
+['',[['Mar','Seuil 2 × 15 min',E+'2 × 15 min à {T}, récup 3 min'+R],['Jeu','50 min footing','Facile'],['Sam','1 h 50 dont 40 min allure semi','70 min facile, puis 40 min à {S}']]],
+['Semaine course',[['Mar','40 min + 4 lignes droites','Facile'],['Jeu','35 min + 3 lignes droites','Facile'],['Dim','10 km n°5','Objectif 47:30, soit 4:45/km. En dessous, le 1h45 est jouable.',1,2850]]],
+['',[['Mar','45 min footing',RC],['Jeu','Allure semi 2 × 4 km',E+'2 × 4 km à {S}, récup 3 min'+R],['Sam','1 h 45 footing',K]]],
 ['',[['Mar','Seuil 3 × 8 min',E+'3 × 8 min à {T}, récup 2 min'+R],['Jeu','45 min footing','Facile'],['Sam','1 h 40 dont 50 min allure semi','50 min facile, puis 50 min à {S}. Dernière grosse séance, en tenue de course.']]],
 ['Affûtage',[['Mar','Allure 10 km 5 × 1 km',E+'5 × 1 km à {D}, récup 1 min 30'+R],['Jeu','45 min footing','Facile'],['Sam','1 h 20 dont 20 min allure semi','60 min facile, puis 20 min à {S}']]],
 ['Affûtage',[['Mar','Allure semi 3 × 2 km',E+'3 × 2 km à {S}, récup 2 min'+R],['Jeu','40 min + 4 lignes droites','Facile'],['Sam','60 min footing','Facile']]],
@@ -436,7 +436,7 @@ function level(n){
   if(n in LV)return LV[n];
   let lv=null,ratio=1;
   RACES.forEach(rc=>{
-    if(rc.n>=n||rc.km>20)return;
+    if(rc.n>=n)return;
     const plan=eq10(rc.goal,rc.km),t=result(rc.n);
     if(t)ratio=Math.min(1.25,Math.max(.85,eq10(t,rc.km)/plan));
     lv={rc,real:t,ratio,t10:plan*ratio};
@@ -718,7 +718,7 @@ function openSession(n,i){
   <p class="detail">${M.detail}</p>
   <button class="btn primary big" data-go="${n},${i}">${IC.play}Démarrer la séance</button>
   <div class="btn-row"><button class="btn" id="shGpx">${IC.up}Importer un GPX</button><button class="btn${done?' on':''}" id="shDone">${IC.check}${done?'Faite':'Marquer faite'}</button></div>
-  ${M.isRace?`<div class="res"><label for="resIn">Mon chrono officiel</label><div class="res-row"><input id="resIn" inputmode="decimal" autocomplete="off" placeholder="${km>20?'1:44:30':'52:30'}" value="${man?ft(res):''}"><button id="resOk">Valider</button></div><small>${res?(man?'Pris en compte.':`Mesuré par GPS : ${ft(res)}. Entre ton chrono officiel s’il est différent.`)+(km>20?'':' Tes allures des semaines suivantes sont calculées dessus.'):km>20?'Entre-le après la course pour en garder la trace.':'Entre-le après la course : tes allures des semaines suivantes seront calculées dessus.'}</small></div>`:''}
+  ${M.isRace?`<div class="res"><label for="resIn">Mon chrono officiel</label><div class="res-row"><input id="resIn" inputmode="decimal" autocomplete="off" placeholder="${km>20?'1:44:30':'52:30'}" value="${man?ft(res):''}"><button id="resOk">Valider</button></div><small>${res?(man?'Pris en compte.':`Mesuré par GPS : ${ft(res)}. Entre ton chrono officiel s’il est différent.`)+(n===44?'':' Tes allures des semaines suivantes sont calculées dessus.'):n===44?'Entre-le après la course pour en garder la trace.':'Entre-le après la course : tes allures des semaines suivantes seront calculées dessus.'}</small></div>`:''}
   <div class="note warn" id="shMsg" hidden></div>
   ${rs.length?`<h3>Sorties enregistrées</h3><div class="list" style="margin-bottom:0">${rs.map(runRow).join('')}</div>`:''}
   <h3>Déroulé${M.secs?' · '+hmin(M.secs):''}</h3><ol class="steps">${list}</ol>`);
@@ -778,7 +778,7 @@ const VIEWS={home:['v-home','Aujourd’hui'],plan:['v-plan','Mon plan'],prog:['v
 let view='home';
 function refresh(){
   $('hdrT').textContent=VIEWS[view][1];
-  $('hdrK').textContent=view==='home'?f(today,{weekday:'long',day:'numeric',month:'long'}):view==='plan'?'44 semaines · 7 courses':'Objectif 1h45 au semi';
+  $('hdrK').textContent=view==='home'?f(today,{weekday:'long',day:'numeric',month:'long'}):view==='plan'?'44 semaines · '+RACES.length+' courses':'Objectif 1h45 au semi';
   ({home:renderHome,plan:renderPlan,prog:renderProg})[view]();
 }
 function show(v){
